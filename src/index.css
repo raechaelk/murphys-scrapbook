@@ -204,6 +204,7 @@ body {
 /* ==================
    DIALOGUE BOX
    ================== */
+/* DIALOGUE OVERLAY */
 .dialogue-overlay {
   position: fixed;
   bottom: 0;
@@ -211,65 +212,43 @@ body {
   width: 100%;
   padding: 20px;
   z-index: 100;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 16px;
 }
 
+/* CHARACTER — standing tall left side */
+.dialogue-character {
+  flex-shrink: 0;
+  width: 180px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.character-standing {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.5));
+}
+
+/* DIALOGUE BOX */
 .dialogue-box {
-  max-width: 700px;
-  margin: 0 auto;
+  flex: 1;
+  max-width: 600px;
   background: var(--paper-cream);
   border: 3px solid var(--paper-aged);
   border-radius: 12px;
   padding: 20px;
   box-shadow: 0 -4px 30px rgba(0,0,0,0.5);
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-  align-items: center;
   transition: border-color 0.3s;
 }
 
-/* border tint changes depending on who's speaking */
 .speaker-is-murphy { border-color: #c4956a; }
 .speaker-is-bartholomew { border-color: #7a8a9a; }
 
-/* CHARACTER PORTRAIT — left side */
-.dialogue-portrait {
-  flex-shrink: 0;
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 3px solid var(--paper-aged);
-  transition: background 0.3s;
-}
-
-.portrait-murphy {
-  background: rgba(196, 149, 106, 0.15);
-  border-color: var(--murphy-brown);
-}
-
-.portrait-bartholomew {
-  background: rgba(122, 138, 154, 0.15);
-  border-color: var(--bartholomew-grey);
-}
-
-.portrait-placeholder {
-  font-size: 2.8rem;
-}
-
-.portrait-img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  border-radius: 50%;
-  transition: opacity 0.2s;
-}
-
-/* DIALOGUE CONTENT — right side */
 .dialogue-content {
-  flex: 1;
   display: flex;
   flex-direction: column;
   gap: 6px;

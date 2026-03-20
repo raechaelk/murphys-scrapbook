@@ -53,24 +53,13 @@ const DIALOGUES = {
   }
 }
 
-function CharacterPortrait({ speaker, murphyEmotion }) {
-  const getMurphyImage = () => {
-    switch(murphyEmotion) {
-      case 'sleeping': return '/murphys-scrapbook/characters/murphy-sleeping.png'
-      case 'shocked':  return '/murphys-scrapbook/characters/murphy-shocked.png'
-      default:         return '/murphys-scrapbook/characters/murphy-neutral.png'
-    }
+// gets the right murphy image based on emotion
+const getMurphyImage = (emotion) => {
+  switch(emotion) {
+    case 'sleeping': return '/murphys-scrapbook/characters/murphy-sleeping.png'
+    case 'shocked':  return '/murphys-scrapbook/characters/murphy-shocked.png'
+    default:         return '/murphys-scrapbook/characters/murphy-neutral.png'
   }
-
-  return (
-    <div className={`dialogue-portrait portrait-${speaker}`}>
-      {speaker === 'murphy' ? (
-        <img src={getMurphyImage()} alt={`murphy ${murphyEmotion}`} className="portrait-img" />
-      ) : (
-        <div className="portrait-placeholder">🦈</div>
-      )}
-    </div>
-  )
 }
 
 function DialogueBox({ dialogue, onClose, onSetDialogue }) {
@@ -93,23 +82,42 @@ function DialogueBox({ dialogue, onClose, onSetDialogue }) {
 
   return (
     <div className="dialogue-overlay">
+
+      {/* CHARACTER — standing tall on the left */}
+      <div className="dialogue-character">
+        <img
+          src={line.speaker === 'murphy'
+            ? getMurphyImage(line.murphyEmotion)
+            : '/murphys-scrapbook/characters/bartholomew.png'
+          }
+          alt={line.speaker}
+          className="character-standing"
+        />
+      </div>
+
+      {/* DIALOGUE BOX — to the right */}
       <div className={`dialogue-box speaker-is-${line.speaker}`}>
-        <CharacterPortrait speaker={line.speaker} murphyEmotion={line.murphyEmotion} />
         <div className="dialogue-content">
+
           <div className={`dialogue-speaker ${line.speaker}`}>
             {line.speaker === 'bartholomew' ? 'bartholomew' : 'murphy'}
           </div>
+
           {line.korean && (
             <div className="dialogue-korean">{line.korean}</div>
           )}
+
           <div className="dialogue-text">
             {line.text}
           </div>
+
           <button className="dialogue-next" onClick={handleNext}>
             {isLastLine ? '[ close ]' : '[ next ▶ ]'}
           </button>
+
         </div>
       </div>
+
     </div>
   )
 }
