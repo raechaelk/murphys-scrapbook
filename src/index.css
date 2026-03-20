@@ -1,111 +1,260 @@
+/* 🎨 murphy's scrapbook — global styles */
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Caveat:wght@400;600;700&display=swap');
+
+/* CSS VARIABLES — our color palette */
+/* think of these like your Procreate color swatches */
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
-
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
-
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
+  --night-dark: #1a1410;
+  --night-mid: #2d2218;
+  --lamp-gold: #f5c842;
+  --lamp-warm: #e8a020;
+  --candle-orange: #ff6b2b;
+  --paper-cream: #fdf6e3;
+  --paper-aged: #e8d5b0;
+  --text-dark: #2c1810;
+  --text-soft: #6b4c3b;
+  --murphy-brown: #c4956a;
+  --bartholomew-grey: #7a8a9a;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-}
-
-body {
+* {
   margin: 0;
-}
-
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
+  padding: 0;
   box-sizing: border-box;
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
+body {
+  background: var(--night-dark);
+  font-family: 'Nunito', sans-serif;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  cursor: url('/cursors/magnify.png'), auto;
 }
 
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
-p {
-  margin: 0;
+/* handwriting font — used for scrapbook text */
+.handwriting {
+  font-family: 'Caveat', cursive;
 }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
+/* GAME CONTAINER */
+.game-container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ROOM */
+.room {
+  width: 100%;
+  height: 100%;
+  background: var(--night-dark);
+  position: relative;
+}
+
+/* WINDOW */
+.window {
+  position: absolute;
+  top: 8%;
+  left: 15%;
+  width: 20%;
+  height: 25%;
+  background: #0a0f1a;
+  border: 3px solid var(--night-mid);
   border-radius: 4px;
-  color: var(--text-h);
+  overflow: hidden;
 }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+.city-lights {
+  position: absolute;
+  bottom: 20%;
+  width: 100%;
+  height: 30%;
+  background: radial-gradient(ellipse, rgba(255,200,80,0.15) 0%, transparent 70%);
+}
+
+/* LAMP */
+.lamp {
+  position: absolute;
+  top: 15%;
+  right: 25%;
+}
+
+.lamp-base {
+  width: 12px;
+  height: 60px;
+  background: #4a3728;
+  margin: 0 auto;
+}
+
+.lamp-glow {
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, rgba(245,200,66,0.4) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: flicker 3s ease-in-out infinite;
+}
+
+/* CANDLES */
+.candle {
+  position: absolute;
+  bottom: 35%;
+}
+
+.candle-one { right: 30%; }
+.candle-two { right: 20%; }
+
+.candle-flame {
+  display: none;
+  width: 8px;
+  height: 12px;
+  background: var(--candle-orange);
+  border-radius: 50% 50% 30% 30%;
+  margin: 0 auto;
+  animation: flicker 1s ease-in-out infinite;
+}
+
+.candle.lit .candle-flame {
+  display: block;
+}
+
+/* FAIRY LIGHTS */
+.fairy-lights {
+  position: absolute;
+  top: 10%;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.fairy-light-bulb {
+  width: 8px;
+  height: 8px;
+  background: var(--lamp-gold);
+  border-radius: 50%;
+  box-shadow: 0 0 6px var(--lamp-gold);
+  animation: twinkle 2s ease-in-out infinite;
+}
+
+/* DESK */
+.desk {
+  position: absolute;
+  bottom: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  height: 15%;
+  background: #3d2b1a;
+  border-top: 4px solid #5a3d24;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: filter 0.3s;
+}
+
+.desk:hover {
+  filter: brightness(1.2);
+}
+
+.desk-objects {
+  display: flex;
+  gap: 20px;
+  font-size: 1.5rem;
+}
+
+/* CHARACTERS */
+.murphy-sprite {
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  font-size: 2.5rem;
+}
+
+.bartholomew-sprite {
+  position: absolute;
+  bottom: 22%;
+  right: 10%;
+  font-size: 2.5rem;
+}
+
+/* DIALOGUE BOX */
+.dialogue-overlay {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  z-index: 100;
+}
+
+.dialogue-box {
+  max-width: 700px;
+  margin: 0 auto;
+  background: var(--paper-cream);
+  border: 3px solid var(--paper-aged);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 -4px 30px rgba(0,0,0,0.5);
+}
+
+.dialogue-speaker {
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: lowercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+}
+
+.dialogue-speaker.bartholomew { color: var(--bartholomew-grey); }
+.dialogue-speaker.murphy { color: var(--murphy-brown); }
+
+.dialogue-korean {
+  font-family: 'Caveat', cursive;
+  font-size: 1rem;
+  color: var(--text-soft);
+  margin-bottom: 4px;
+}
+
+.dialogue-text {
+  font-size: 1.1rem;
+  color: var(--text-dark);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.dialogue-next {
+  background: none;
+  border: 2px solid var(--text-soft);
+  color: var(--text-soft);
+  padding: 8px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: 'Caveat', cursive;
+  font-size: 1rem;
+  float: right;
+  transition: all 0.2s;
+}
+
+.dialogue-next:hover {
+  background: var(--text-soft);
+  color: var(--paper-cream);
+}
+
+/* ANIMATIONS */
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.8); }
 }
