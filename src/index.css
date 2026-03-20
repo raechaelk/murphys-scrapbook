@@ -194,67 +194,99 @@ body {
   padding: 20px;
   z-index: 100;
 }
-
+ 
 .dialogue-box {
   max-width: 700px;
   margin: 0 auto;
   background: var(--paper-cream);
   border: 3px solid var(--paper-aged);
   border-radius: 12px;
-  padding: 24px;
+  padding: 20px;
   box-shadow: 0 -4px 30px rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  transition: border-color 0.3s;
 }
-
+ 
+/* border tint changes depending on who's speaking */
+.speaker-is-murphy { border-color: #c4956a; }
+.speaker-is-bartholomew { border-color: #7a8a9a; }
+ 
+/* CHARACTER PORTRAIT — left side */
+.dialogue-portrait {
+  flex-shrink: 0;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid var(--paper-aged);
+  transition: background 0.3s;
+}
+ 
+.portrait-murphy {
+  background: rgba(196, 149, 106, 0.15);
+  border-color: var(--murphy-brown);
+}
+ 
+.portrait-bartholomew {
+  background: rgba(122, 138, 154, 0.15);
+  border-color: var(--bartholomew-grey);
+}
+ 
+.portrait-placeholder {
+  font-size: 2.8rem;
+}
+ 
+/* DIALOGUE CONTENT — right side */
+.dialogue-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+ 
 .dialogue-speaker {
   font-weight: 700;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   text-transform: lowercase;
-  letter-spacing: 0.1em;
-  margin-bottom: 8px;
+  letter-spacing: 0.12em;
 }
-
+ 
 .dialogue-speaker.bartholomew { color: var(--bartholomew-grey); }
 .dialogue-speaker.murphy { color: var(--murphy-brown); }
-
+ 
 .dialogue-korean {
   font-family: 'Caveat', cursive;
   font-size: 1rem;
   color: var(--text-soft);
-  margin-bottom: 4px;
 }
-
+ 
 .dialogue-text {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   color: var(--text-dark);
   line-height: 1.6;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
 }
-
+ 
 .dialogue-next {
   background: none;
   border: 2px solid var(--text-soft);
   color: var(--text-soft);
-  padding: 8px 20px;
+  padding: 6px 18px;
   border-radius: 20px;
   cursor: pointer;
   font-family: 'Caveat', cursive;
   font-size: 1rem;
-  float: right;
+  align-self: flex-end;
   transition: all 0.2s;
 }
-
+ 
 .dialogue-next:hover {
   background: var(--text-soft);
   color: var(--paper-cream);
 }
-
-/* ANIMATIONS */
-@keyframes flicker {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.7; }
-}
-
-@keyframes twinkle {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(0.8); }
-}
+ 
