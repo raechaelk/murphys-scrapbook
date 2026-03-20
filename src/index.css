@@ -38,7 +38,9 @@ body {
   font-family: 'Caveat', cursive;
 }
 
-/* GAME CONTAINER */
+/* ==================
+   GAME CONTAINER
+   ================== */
 .game-container {
   width: 100vw;
   height: 100vh;
@@ -46,7 +48,9 @@ body {
   overflow: hidden;
 }
 
-/* ROOM */
+/* ==================
+   ROOM
+   ================== */
 .room {
   width: 100%;
   height: 100%;
@@ -54,7 +58,9 @@ body {
   position: relative;
 }
 
-/* WINDOW */
+/* ==================
+   WINDOW
+   ================== */
 .window {
   position: absolute;
   top: 8%;
@@ -75,7 +81,9 @@ body {
   background: radial-gradient(ellipse, rgba(255,200,80,0.15) 0%, transparent 70%);
 }
 
-/* LAMP */
+/* ==================
+   LAMP
+   ================== */
 .lamp {
   position: absolute;
   top: 15%;
@@ -101,7 +109,9 @@ body {
   animation: flicker 3s ease-in-out infinite;
 }
 
-/* CANDLES */
+/* ==================
+   CANDLES
+   ================== */
 .candle {
   position: absolute;
   bottom: 35%;
@@ -124,7 +134,9 @@ body {
   display: block;
 }
 
-/* FAIRY LIGHTS */
+/* ==================
+   FAIRY LIGHTS
+   ================== */
 .fairy-lights {
   position: absolute;
   top: 10%;
@@ -143,7 +155,9 @@ body {
   animation: twinkle 2s ease-in-out infinite;
 }
 
-/* DESK */
+/* ==================
+   DESK
+   ================== */
 .desk {
   position: absolute;
   bottom: 20%;
@@ -170,7 +184,9 @@ body {
   font-size: 1.5rem;
 }
 
-/* CHARACTERS */
+/* ==================
+   CHARACTERS
+   ================== */
 .murphy-sprite {
   position: absolute;
   bottom: 0;
@@ -185,7 +201,9 @@ body {
   font-size: 2.5rem;
 }
 
-/* DIALOGUE BOX */
+/* ==================
+   DIALOGUE BOX
+   ================== */
 .dialogue-overlay {
   position: fixed;
   bottom: 0;
@@ -194,7 +212,7 @@ body {
   padding: 20px;
   z-index: 100;
 }
- 
+
 .dialogue-box {
   max-width: 700px;
   margin: 0 auto;
@@ -209,11 +227,11 @@ body {
   align-items: center;
   transition: border-color 0.3s;
 }
- 
+
 /* border tint changes depending on who's speaking */
 .speaker-is-murphy { border-color: #c4956a; }
 .speaker-is-bartholomew { border-color: #7a8a9a; }
- 
+
 /* CHARACTER PORTRAIT — left side */
 .dialogue-portrait {
   flex-shrink: 0;
@@ -226,21 +244,29 @@ body {
   border: 3px solid var(--paper-aged);
   transition: background 0.3s;
 }
- 
+
 .portrait-murphy {
   background: rgba(196, 149, 106, 0.15);
   border-color: var(--murphy-brown);
 }
- 
+
 .portrait-bartholomew {
   background: rgba(122, 138, 154, 0.15);
   border-color: var(--bartholomew-grey);
 }
- 
+
 .portrait-placeholder {
   font-size: 2.8rem;
 }
- 
+
+.portrait-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+  transition: opacity 0.2s;
+}
+
 /* DIALOGUE CONTENT — right side */
 .dialogue-content {
   flex: 1;
@@ -248,30 +274,30 @@ body {
   flex-direction: column;
   gap: 6px;
 }
- 
+
 .dialogue-speaker {
   font-weight: 700;
   font-size: 0.8rem;
   text-transform: lowercase;
   letter-spacing: 0.12em;
 }
- 
+
 .dialogue-speaker.bartholomew { color: var(--bartholomew-grey); }
 .dialogue-speaker.murphy { color: var(--murphy-brown); }
- 
+
 .dialogue-korean {
   font-family: 'Caveat', cursive;
   font-size: 1rem;
   color: var(--text-soft);
 }
- 
+
 .dialogue-text {
   font-size: 1.05rem;
   color: var(--text-dark);
   line-height: 1.6;
   margin-bottom: 8px;
 }
- 
+
 .dialogue-next {
   background: none;
   border: 2px solid var(--text-soft);
@@ -284,9 +310,21 @@ body {
   align-self: flex-end;
   transition: all 0.2s;
 }
- 
+
 .dialogue-next:hover {
   background: var(--text-soft);
   color: var(--paper-cream);
 }
- 
+
+/* ==================
+   ANIMATIONS
+   ================== */
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.8); }
+}
