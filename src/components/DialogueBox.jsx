@@ -5,9 +5,9 @@ const DIALOGUES = {
   'opening': {
     lines: [
       { 
-        speaker: 'bartholomew', 
-        korean: '야 murphy', 
-        text: 'MURPHY. murphy wake up. WAKE UP RIGHT NOW.',
+        speaker: 'bartholomew',
+        text: 'murphy MURPHY MURPHYYY',
+        textShake: 'WAKE UP RIGHT NOWW!!',
         murphyEmotion: 'sleeping'
       },
       { 
@@ -16,8 +16,8 @@ const DIALOGUES = {
         murphyEmotion: 'sleeping'
       },
       { 
-        speaker: 'bartholomew', 
-        text: "THE SCRAPBOOK, murphy. THE SCRAPBOOK IS — but um — it's not great.",
+        speaker: 'bartholomew',
+        text: 'THE SCRAPBOOK!!! its damaged :((',
         murphyEmotion: 'shocked'
       },
       { 
@@ -109,10 +109,13 @@ function DialogueBox({ dialogue, onClose, onSetDialogue }) {
 
           <div className="dialogue-text">
             {line.text}
+            {line.textShake && (
+              <span className="shake-text"> {line.textShake}</span>
+            )}
           </div>
 
           <button className="dialogue-next" onClick={handleNext}>
-            {isLastLine ? '[ close ]' : '[ next ▶ ]'}
+            {isLastLine ? 'close' : 'next ▶'}
           </button>
 
         </div>
